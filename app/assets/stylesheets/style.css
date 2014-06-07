@@ -16,3 +16,20 @@ body {
   background-color: #0064B9;
   background-position: bottom;
 }
+
+.activity-detail {
+  display: none;
+}
+
+.panel-body {
+  color:#777;
+}
+
+.hint {
+  margin: 40px;
+  text-align: center;
+}
+
+.blurby {
+    color: url("http://m.rgbimg.com/cache1sw4YI/users/x/xy/xymonau/600/nxXqi9O.jpg");
+}

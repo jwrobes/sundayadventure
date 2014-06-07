@@ -9,18 +9,29 @@ var ActivityController = function(){
 
 ActivityController.prototype = {
   bindListeners: function(){
-    $('.door').click(this.newActivity.bind(this))
-    debugger
+    $('.container').on('click', '.door', this.newActivity.bind(this))
+
   },
   newActivity: function(e) {
-    // grey out "shown" doors
     var target = $(e.currentTarget)
-    this.disableShownDoor();
-    this.setCurrentActivity(target);
-    // get new activity from server
-    var activity = this.getNewActivity();
-    // show new activity
-    this.showNewActivity(target, activity)
+    var doorId = target.attr('data-id')
+
+    if (target.hasClass('alert-success')) {
+      this.selectActivity(doorId)
+    }
+    else if ($('.alert-danger').length === 1) {
+      this.selectActivity(doorId)
+    }
+    else if (target.hasClass('alert-warning')) {
+      this.disableShownDoor();
+      this.setCurrentActivity(target);
+      var activity = this.getNewActivity(doorId);
+      this.showNewActivity(target, activity);
+    }
+  },
+  selectActivity: function(doorId) {
+    $('.activity-detail[data-id='+doorId+']').show()
+    $('.door').hide()
   },
   disableShownDoor: function(){
     previousActivity = $('.alert-success')
@@ -34,7 +45,7 @@ ActivityController.prototype = {
   showNewActivity: function(target, activity) {
     target.text(activity)
   },
-  getNewActivity: function() {
-    return "Go for a walk in an unknown place..."
-  },
+  getNewActivity: function(doorId) {
+    return $('.activity-detail[data-id='+doorId+'] .hint').text()
+  }
 }
