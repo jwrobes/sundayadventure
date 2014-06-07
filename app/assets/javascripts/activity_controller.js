@@ -18,7 +18,7 @@ ActivityController.prototype = {
     if (target.hasClass('alert-success')) {
       this.selectActivity(doorId)
     }
-    else if ($('.alert-danger').length === 1) {
+    else if ($('.alert-danger').length === 1&&target.hasClass('alert-warning')) {
       this.selectActivity(doorId)
     }
     else if (target.hasClass('alert-warning')) {
