@@ -10,17 +10,3 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
-group :development do
-  gem 'better_errors'
-  gem 'sextant'
-  gem 'debugger'
-end
-
-group :test do
-  gem 'rspec-rails'
-  gem 'shoulda-matchers'
-  gem 'capybara'
-  gem 'database_cleaner'
-  gem 'selenium-webdriver'
-end
