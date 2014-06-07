@@ -31,5 +31,16 @@ body {
 }
 
 .blurby {
-    color: url("http://m.rgbimg.com/cache1sw4YI/users/x/xy/xymonau/600/nxXqi9O.jpg");
+color:#333;
 }
+
+@media (max-width: 1100px) {
+  .blurby {
+  color: #d3d3d3;
+  }
+}
+
+
+
+
+/*url("http://m.rgbimg.com/cache1sw4YI/users/x/xy/xymonau/600/nxXqi9O.jpg");*/
