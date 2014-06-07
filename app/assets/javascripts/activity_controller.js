@@ -10,6 +10,7 @@ var ActivityController = function(){
 ActivityController.prototype = {
   bindListeners: function(){
     $('.door').click(this.newActivity.bind(this))
+    debugger
   },
   newActivity: function(e) {
     // grey out "shown" doors
@@ -35,5 +36,5 @@ ActivityController.prototype = {
   },
   getNewActivity: function() {
     return "Go for a walk in an unknown place..."
-  }
+  },
 }

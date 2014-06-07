@@ -1606,3 +1606,9 @@ Served asset /application.js - 304 Not Modified (0ms)
 
 Started GET "/assets/activity_controller.js?body=1" for 127.0.0.1 at 2014-06-07 14:10:10 -0700
 Served asset /activity_controller.js - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (18.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (2.6ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
