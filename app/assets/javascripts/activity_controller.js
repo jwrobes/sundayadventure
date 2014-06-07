@@ -10,6 +10,7 @@ var ActivityController = function(){
 ActivityController.prototype = {
   bindListeners: function(){
     $('.container').on('click', '.door', this.newActivity.bind(this))
+
   },
   newActivity: function(e) {
     var target = $(e.currentTarget)
