@@ -10,6 +10,7 @@ var ActivityController = function(){
 ActivityController.prototype = {
   bindListeners: function(){
     $('.container').on('click', '.door', this.newActivity.bind(this))
+    $('.container').on('click', '.complete', this.getLocation.bind(this))
   },
   newActivity: function(e) {
     var target = $(e.currentTarget)
@@ -46,5 +47,31 @@ ActivityController.prototype = {
   },
   getNewActivity: function(doorId) {
     return $('.activity-detail[data-id='+doorId+'] .hint').text()
+  },
+
+  getLocation: function() {
+    navigator.geolocation.getCurrentPosition(this.checkLocation.bind(this));
+  },
+
+  checkLocation: function(position) {
+    console.log(position)
+    var activityLocation = this.getActivityLocation()
+    this.compareLocation(position, activityLocation)
+  },
+
+  compareLocation: function(position, activityLocation) {
+    if (position == activityLocation) {
+      clearCookies;
+      location.reload();
+    }
+    else {
+      alert("Nice try!")
+    }
+  },
+
+  getActivityLocation: function() {
+
   }
+
+
 }
