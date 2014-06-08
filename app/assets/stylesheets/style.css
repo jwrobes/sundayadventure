@@ -38,11 +38,14 @@ p {
   text-align: center;
 }
 
-footer {
-  padding-top: 60px;
-
+.footer-brand {
+  color: white;
+  font-size: 1.25em;
 }
 
+#footer {
+  text-align: center;
+}
 
 @media (max-width: 1100px) {
   .blurby {
