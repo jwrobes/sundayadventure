@@ -22,4 +22,5 @@ config/secrets.yml
 /vendor/bundle
 
 # these should all be checked in to normalise the environment:
-# Gemfile.lock
+Gemfile.lock
+tmp/*
