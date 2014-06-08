@@ -1,10 +1,11 @@
+
 require 'httparty'
 
 module Foursquare
   class Activitycall
     include HTTParty
     def initialize(search_params ={})
-      @long_and_lat = search_params[:long_and_lat]
+      @long_and_lat = search_params[:lat_and_long]
       @section = 'outdoors'
       ## hardcoded v for date need make updatable
       @options =  {:query => {v: "20131016", ll:@long_and_lat, section: @section,
@@ -27,6 +28,7 @@ module Foursquare
     end
 
     def return_activity(activity_number,parsed_data)
+      p parsed_data
       name = parsed_data["response"]["groups"][0]["items"][activity_number]["venue"]["name"]
       category = parsed_data["response"]["groups"][0]["items"][activity_number]["venue"]["categories"][0]["name"]
       location = parsed_data["response"]["groups"][0]["items"][activity_number]["venue"]["location"]
@@ -36,7 +38,5 @@ module Foursquare
   end
 end
 
-test = Foursquare::Activitycall.new({long_and_lat: '37.7871067,-122.399357'})
 
-p test.activities
 

@@ -1,6 +1,10 @@
 $(document).ready(function(){
   var activityController = new ActivityController();
   activityController.bindListeners();
+  // debugger
+  navigator.geolocation.getCurrentPosition(function(position){activityController.getAPI(position);})
+  // activityController.getAPI();
+
 });
 
 var ActivityController = function(){
@@ -45,8 +49,19 @@ ActivityController.prototype = {
   showNewActivity: function(target, activity) {
     target.text(activity)
   },
+
   getNewActivity: function(doorId) {
     return $('.activity-detail[data-id='+doorId+'] .hint').text()
+  },
+
+  getAPI: function (position) {
+
+    var lat_and_long = position.coords.latitude + "," + position.coords.longitude
+    var jhqxr = $.ajax({
+      url: "activities/whatever",
+      type: 'get',
+      data: {lat_and_long: "37.784440499,-122.39697729"}
+    }).done(function(data){  })
   },
 
   getLocation: function() {
