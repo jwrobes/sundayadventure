@@ -38,6 +38,12 @@ p {
   text-align: center;
 }
 
+footer {
+  padding-top: 60px;
+
+}
+
+
 @media (max-width: 1100px) {
   .blurby {
   color: white;
