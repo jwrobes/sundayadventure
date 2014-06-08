@@ -60,8 +60,10 @@ ActivityController.prototype = {
   },
 
   compareLocation: function(position, activityLocation) {
-    if (position == activityLocation) {
-      clearCookies;
+    var distance=this.distanceBetween(position, activityLocation)
+    console.log(distance);
+    if (distance < 0.002) {
+      this.clearCookies;
       location.reload();
     }
     else {
@@ -70,8 +72,19 @@ ActivityController.prototype = {
   },
 
   getActivityLocation: function() {
+    return {
+      latitude:37.783644, longitude:-122.398855
+    }
+  },
 
+  clearCookies: function() {
+    document.cookie="";
+  },
+
+  distanceBetween: function(position, activityLocation) {
+    var squared_lat=Math.pow((position.coords.latitude-activityLocation.latitude), 2);
+    var squared_lng=Math.pow((position.coords.longitude-activityLocation.longitude), 2);
+    return Math.sqrt(squared_lat+squared_lng);
   }
-
 
 }
