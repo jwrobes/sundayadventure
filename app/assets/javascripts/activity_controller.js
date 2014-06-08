@@ -61,7 +61,10 @@ ActivityController.prototype = {
       url: "activities/whatever",
       type: 'get',
       data: {lat_and_long: "37.784440499,-122.39697729"}
-    }).done(function(data){  })
+    }).done(function(data){
+      debugger
+      console.log(data)
+   })
   },
 
   getLocation: function() {
