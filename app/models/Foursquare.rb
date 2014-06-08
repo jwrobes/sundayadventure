@@ -7,7 +7,6 @@ module Foursquare
     def initialize(search_params ={})
       @long_and_lat = search_params[:lat_and_long]
       @section = 'outdoors'
-      ## hardcoded v for date need make updatable
       @options =  {:query => {v: "20131016", ll:@long_and_lat, section: @section,
                       "client_id" =>"A0HOXGS3TDR3NVABD1Q2LGQ5WDGN4USBKPVUHDMHMCOHSZQ4",
                       "client_secret" => "MU3RCF4YXGVELYX5FNTPTYUIMI1DRIPU2O11CN5UQ1VY1HE2"}}
@@ -21,9 +20,13 @@ module Foursquare
     def parseForActivities(response)
       parsed_data = JSON.parse(response)
       choices = {door_one:{}, door_two: {}, door_three: {}}
-      choices[:door_one] = return_activity(rand(1..10), parsed_data)
-      choices[:door_two] = return_activity(rand(1..10), parsed_data)
-      choices[:door_three] = return_activity(rand(1..10), parsed_data)
+      activities = (1..30).to_a.shuffle
+      activity1 = activities.pop
+      activity2 = activities.pop
+      activity3 = activities.pop
+      choices[:door_one] = return_activity(activity1, parsed_data)
+      choices[:door_two] = return_activity(activity2, parsed_data)
+      choices[:door_three] = return_activity(activity3, parsed_data)
       choices
     end
 
