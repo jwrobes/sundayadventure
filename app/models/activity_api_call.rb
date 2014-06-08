@@ -1,5 +1,3 @@
-
-require 'pry'
 require 'httparty'
 
 module Foursquare
