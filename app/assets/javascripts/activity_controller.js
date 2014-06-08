@@ -61,10 +61,15 @@ ActivityController.prototype = {
       url: "activities/whatever",
       type: 'get',
       data: {lat_and_long: "37.784440499,-122.39697729"}
-    }).done(function(data){
-      debugger
-      console.log(data)
-   })
+    }).done(this.renderActivities.bind(this))
+  },
+
+  renderActivities: function(data) {
+    $('.door').show()
+    $('.loading').hide()
+    $('.activity-detail[data-id=1] .activity-name').text(data.door_one.name)
+    $('.activity-detail[data-id=2] .activity-name').text(data.door_two.name)
+    $('.activity-detail[data-id=3] .activity-name').text(data.door_three.name)
   },
 
   getLocation: function() {
@@ -80,7 +85,7 @@ ActivityController.prototype = {
   compareLocation: function(position, activityLocation) {
     var distance=this.distanceBetween(position, activityLocation)
     console.log(distance);
-    if (distance < 0.002) {
+    if (distance < 0.0025) {
       this.clearCookies;
       location.reload();
     }
