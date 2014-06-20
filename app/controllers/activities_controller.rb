@@ -7,7 +7,6 @@ class ActivitiesController < ApplicationController
   def whatever
     foursqare_api_call = Foursquare::Activitycall.new({lat_and_long: params["lat_and_long"]})
     data = foursqare_api_call.activities
-    debugger
     set_cookies(data)
     render :json => data
   end
